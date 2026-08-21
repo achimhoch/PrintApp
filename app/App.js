@@ -146,7 +146,10 @@ class Application extends EventEmitter {
 
                 this.printServer,
 
-                this.socket
+                this.socket,
+
+                this.jobManager
+
 
             );
 
