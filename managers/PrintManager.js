@@ -6,7 +6,8 @@ class PrintManager extends EventEmitter {
 
     constructor(
         printServer,
-        socketClient
+        socketClient,
+        jobManager
     ) {
 
         super();
@@ -17,8 +18,7 @@ class PrintManager extends EventEmitter {
         this.socket =
             socketClient;
 
-        this.jobs =
-            new Map();
+        this.jobManager = jobManager;
 
         this.bindSocket();
 
@@ -30,69 +30,55 @@ class PrintManager extends EventEmitter {
 
     bindSocket() {
 
-        this.socket.onJobCreated(
-            job => {
+        this.jobManager.on("created", job => {
 
-                this.jobs.set(
+                /*this.jobs.set(
                     job.id,
                     job
-                );
+                );*/
 
-                this.emit(
-                    "job.created",
-                    job
-                );
+                this.emit("job.created", job);
 
-            }
-        );
+        });
 
-        this.socket.onJobUpdated(
-            job => {
+        this.jobManager.on("updated", job => {
 
-                this.jobs.set(
+                /*this.jobs.set(
                     job.id,
                     job
-                );
+                );*/
 
-                this.emit(
-                    "job.updated",
-                    job
-                );
+                this.emit("job.updated", job);
 
-            }
-        );
+        });
 
-        this.socket.onJobCompleted(
-            job => {
+        this.jobManager.on("completed",  job => {
 
-                this.jobs.set(
+                /*this.jobs.set(
                     job.id,
                     job
-                );
+                );*/
 
-                this.emit(
-                    "job.completed",
-                    job
-                );
+                this.emit("job.completed", job);
 
-            }
-        );
+        });
 
-        this.socket.onJobFailed(
-            job => {
+        this.jobManager.on("failed", job => {
 
-                this.jobs.set(
+                /*this.jobs.set(
                     job.id,
                     job
-                );
+                );*/
 
-                this.emit(
-                    "job.failed",
-                    job
-                );
+                this.emit("job.failed", job);
 
-            }
-        );
+        });
+
+        this.jobManager.on("cancelled", job => {
+
+            this.emit("job.cancelled", job);
+
+        });
 
     }
 
@@ -106,48 +92,63 @@ class PrintManager extends EventEmitter {
         options = {}
     ) {
 
-        const response =
-            await this.printServer.uploadJob(
+        if (queueId === undefined || queueId === null) {
+                throw new Error("queueId is required.");
+        }
 
-                queueId,
+        if (!file) {
+            throw new Error("Print file is required.");
+        }
 
-                file,
-
-                options
-
-            );
+        const result = await this.printServer.uplloadJob(queueId, file, options);
 
         const job =
-            response.data ||
-            response;
+            result?.data ||
+            result?.job ||
+            result;
 
-        if (job.id) {
+        if (job.id && job.id !== undefined && job.id !== null) {
 
-            this.jobs.set(
-                job.id,
-                job
-            );
+            this.jobManager.updateLocalJob(job);
 
         }
 
-        this.emit(
-            "job.submitted",
-            job
-        );
+        this.emit("job.submitted", job);
 
         return job;
 
+    }
+    //----------------------------------------------------------
+    //PrintBuffer
+    //----------------------------------------------------------
+
+    async printBuffer(queueId, data, options = {}) {
+        if (!data) {
+            throw new Error("Print data is required.");
+        }
+
+        return this.print(queueId, data, options);
+    }
+
+    //----------------------------------------------------------
+    //PrintFile
+    //----------------------------------------------------------
+
+    async printFile(queueId, file, options = {}) {
+        if (!file) {
+            throw new Error("Print file is required.");
+        }
+
+        return this.print(queueId, file, options);
     }
 
     //----------------------------------------------------------
     // Job abbrechen
     //----------------------------------------------------------
 
-    async cancel(jobId) {
+    async cancelJob(id) {
 
-        return this.printServer.cancelJob(
-            jobId
-        );
+        return this.jobManager.cancel(id);
 
     }
 
@@ -155,11 +156,9 @@ class PrintManager extends EventEmitter {
     // Job neu starten
     //----------------------------------------------------------
 
-    async restart(jobId) {
+    async restartJob(id) {
 
-        return this.printServer.restartJob(
-            jobId
-        );
+        return this.jobManager.restart(id);
 
     }
 
@@ -167,12 +166,26 @@ class PrintManager extends EventEmitter {
     // Job
     //----------------------------------------------------------
 
-    getJob(jobId) {
+    async getJob(id) {
 
-        return this.jobs.get(
-            jobId
-        );
+        return this.jobManager.get(id);
 
+    }
+
+    //----------------------------------------------------------
+    //Queue
+    //----------------------------------------------------------
+
+    async getQueue(queueid) {
+        return this.printServer.getQueue(queueid);
+    }
+    //----------------------------------------------------------
+    //Status
+    //----------------------------------------------------------
+    status() {
+        return {
+            jobs: this.jobManager ? this.jobManager.status() : null
+        };
     }
 
 }
