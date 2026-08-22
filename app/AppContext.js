@@ -20,7 +20,9 @@ class AppContext {
             application.queueManager;
 
         this.jobManager =
-            application.jobManager;
+            application.jobManager; 
+
+        this.office = application.office;
 
     }
 

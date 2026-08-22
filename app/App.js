@@ -17,6 +17,9 @@ const QueueManager =
 const JobManager =
     require("../managers/JobManager");
 
+const OfficeIntegration = require("../office/OfficeIntegration");
+
+
 
 class Application extends EventEmitter {
 
@@ -67,24 +70,25 @@ class Application extends EventEmitter {
         // Clients
         //------------------------------------------------------
 
-        this.printServer =
-            null;
+        this.printServer = null;
 
-        this.socket =
-            null;
+        this.socket = null;
 
         //------------------------------------------------------
         // Manager
         //------------------------------------------------------
 
-        this.printManager =
-            null;
+        this.printManager = null;
 
-        this.queueManager =
-            null;
+        this.queueManager = null;
 
-        this.jobManager =
-            null;
+        this.jobManager = null;
+
+        //------------------------------------------------------
+        //Office
+        //------------------------------------------------------
+
+        this.office = null;
 
     }
 
@@ -152,6 +156,11 @@ class Application extends EventEmitter {
 
 
             );
+        //------------------------------------------------------
+        //Office
+        //------------------------------------------------------
+
+        this.office = new OfficeIntegration(this);
 
         //------------------------------------------------------
         // Events
