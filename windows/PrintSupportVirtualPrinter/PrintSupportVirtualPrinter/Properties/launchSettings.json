@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PrintSupportVirtualPrinter (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PrintSupportVirtualPrinter (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

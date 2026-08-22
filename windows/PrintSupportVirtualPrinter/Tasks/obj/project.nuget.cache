@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "6YojrhseORM=",
+  "success": true,
+  "projectFilePath": "Z:\\PrintApp\\windows\\PrintSupportVirtualPrinter\\Tasks\\Tasks.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\asd\\.nuget\\packages\\microsoft.netcore.platforms\\3.0.0\\microsoft.netcore.platforms.3.0.0.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\microsoft.windows.cppwinrt\\3.0.260818.1\\microsoft.windows.cppwinrt.3.0.260818.1.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\microsoft.windows.sdk.buildtools.winapp\\0.6.1\\microsoft.windows.sdk.buildtools.winapp.0.6.1.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.28000.2526\\microsoft.windows.sdk.contracts.10.0.28000.2526.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\asd\\.nuget\\packages\\system.runtime.windowsruntime.ui.xaml\\4.6.0\\system.runtime.windowsruntime.ui.xaml.4.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
