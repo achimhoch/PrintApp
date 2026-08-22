@@ -19,6 +19,10 @@ const JobManager =
 
 const OfficeIntegration = require("../office/OfficeIntegration");
 
+const SystemPrintInterface = require("../system/SystemPrintInterface");
+
+const WindowsPrintAdapter = require("../system/windows/WindowsPrintAdapter");
+
 
 
 class Application extends EventEmitter {
@@ -89,6 +93,13 @@ class Application extends EventEmitter {
         //------------------------------------------------------
 
         this.office = null;
+
+        //------------------------------------------------------
+        //Print Interface und Adapter
+        //------------------------------------------------------
+
+        this.systemPrint = null;
+        this.windowsPrint = null;
 
     }
 
@@ -161,6 +172,18 @@ class Application extends EventEmitter {
         //------------------------------------------------------
 
         this.office = new OfficeIntegration(this);
+
+        await this.office.initialize();
+
+        //------------------------------------------------------
+        //Print Adapter und Interface
+        //------------------------------------------------------
+
+        this.systemPrint = new SystemPrintInterface(this, {name: "DruckServer"});
+        await this.systemPrint.initialize();
+
+        this.windowsPrint = new WindowsPrintAdapter(this, {printerName: "DruckServer"});
+        await this.windowsPrint.initialize();
 
         //------------------------------------------------------
         // Events
@@ -396,6 +419,14 @@ class Application extends EventEmitter {
         this.socket.subscribeQueues();
 
         //------------------------------------------------------
+        // Print Adapter und Interface
+        //------------------------------------------------------
+
+        await this.systemPrint.start();
+
+        await this.windowsPrint.start();
+
+        //------------------------------------------------------
         // Status
         //------------------------------------------------------
 
@@ -422,6 +453,14 @@ class Application extends EventEmitter {
 
         this.socket.disconnect();
 
+        //------------------------------------------------------
+        //Print Adapter und Interface
+        //------------------------------------------------------
+
+        await this.systemPrint.stop();
+
+        await this.windowsPrint.stop();
+        
         //------------------------------------------------------
         // Status
         //------------------------------------------------------
