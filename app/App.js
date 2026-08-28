@@ -23,6 +23,8 @@ const SystemPrintInterface = require("../system/SystemPrintInterface");
 
 const WindowsPrintAdapter = require("../system/windows/WindowsPrintAdapter");
 
+const PrintExchangeWatcher = require("../system/PrintExchangewatcher");
+
 
 
 class Application extends EventEmitter {
@@ -100,6 +102,12 @@ class Application extends EventEmitter {
 
         this.systemPrint = null;
         this.windowsPrint = null;
+
+        //------------------------------------------------------
+        //PrintExchangeWatcher
+        //------------------------------------------------------
+
+        this.printExchangewatcher = null;
 
     }
 
@@ -184,6 +192,12 @@ class Application extends EventEmitter {
 
         this.windowsPrint = new WindowsPrintAdapter(this, {printerName: "DruckServer"});
         await this.windowsPrint.initialize();
+
+        //------------------------------------------------------
+        //PrintWatcher
+        //------------------------------------------------------
+
+        this.printExchangewatcher = new PrintExchangeWatcher();
 
         //------------------------------------------------------
         // Events
@@ -427,6 +441,12 @@ class Application extends EventEmitter {
         await this.windowsPrint.start();
 
         //------------------------------------------------------
+        //PrintWatcher
+        //------------------------------------------------------
+
+        await this.printExchangewatcher.start();
+
+        //------------------------------------------------------
         // Status
         //------------------------------------------------------
 
@@ -460,6 +480,12 @@ class Application extends EventEmitter {
         await this.systemPrint.stop();
 
         await this.windowsPrint.stop();
+
+        //------------------------------------------------------
+        //Printwatcher
+        //------------------------------------------------------
+
+        await this.printExchangewatcher.stop();
         
         //------------------------------------------------------
         // Status
