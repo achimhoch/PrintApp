@@ -1,0 +1,18 @@
+{
+    "printExchange": {
+        "enabled": true,
+        "directory": "%LOCALAPPDATA%/Druckserver/PrintExchange",
+        "scanInterval": 1000,
+        "stableTime": 750,
+        "processingDirectory": "processing",
+        "completedDirectory": "completed",
+        "failedDirectory": "failed",
+        "deleteAfterSubmit": false,
+        "maxFileSize": 104857600,
+        "acceptedMimeTypes": [
+            "application/pdf",
+            "application/oxps",
+            "application/vnd.ms-xpsdocument"
+        ]
+    }
+}
