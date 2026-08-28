@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Z:\\PrintApp\\windows\\PrintSupportVirtualPrinter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46CF1688-4A91-49F1-B8A9-FB71BDF67418}|..\\Tasks\\Tasks.csproj|z:\\printapp\\windows\\tasks\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "Z:\\PrintApp\\windows\\Tasks\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\Tasks\\Class1.cs",
+              "ToolTip": "Z:\\PrintApp\\windows\\Tasks\\Class1.cs",
+              "RelativeToolTip": "..\\Tasks\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-23T16:44:38.848Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

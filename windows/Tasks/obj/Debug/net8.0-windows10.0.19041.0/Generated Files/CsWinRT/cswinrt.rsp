@@ -1,0 +1,7 @@
+-target net8.0
+-input 10.0.26100.0
+-input "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.interactiveexperiences\2.1.6\metadata\10.0.18362.0\Microsoft.Foundation.winmd" "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.interactiveexperiences\2.1.6\metadata\10.0.18362.0\Microsoft.Graphics.winmd" "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.interactiveexperiences\2.1.6\metadata\10.0.18362.0\Microsoft.UI.winmd" "C:\Users\asd\.nuget\packages\microsoft.web.webview2\1.0.3719.77\lib\Microsoft.Web.WebView2.Core.winmd" "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.winui\2.3.6\metadata\Microsoft.UI.Text.winmd" "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.winui\2.3.6\metadata\Microsoft.UI.Xaml.winmd" "C:\Users\asd\.nuget\packages\microsoft.windowsappsdk.widgets\2.0.5\metadata\Microsoft.Windows.Widgets.winmd"
+-output "Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Generated Files\CsWinRT"
+
+-exclude Windows
+-exclude Microsoft

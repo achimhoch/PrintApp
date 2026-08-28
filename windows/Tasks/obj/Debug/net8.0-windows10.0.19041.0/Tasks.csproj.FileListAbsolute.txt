@@ -1,0 +1,6 @@
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.csproj.AssemblyReference.cache
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.GeneratedMSBuildEditorConfig.editorconfig
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.AssemblyInfoInputs.cache
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.AssemblyInfo.cs
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.csproj.CoreCompileInputs.cache
+Z:\PrintApp\windows\Tasks\obj\Debug\net8.0-windows10.0.19041.0\Tasks.sourcelink.json
