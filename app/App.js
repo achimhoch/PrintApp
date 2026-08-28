@@ -1,5 +1,7 @@
 "use strict";
 
+//const config = require('config');
+
 const EventEmitter = require("events");
 
 const PrintServerClient =
@@ -38,7 +40,7 @@ class Application extends EventEmitter {
             printServer: {
 
                 baseUrl:
-                    "http://localhost:3000/api",
+                    "http://192.168.0.178:3000/api",
 
                 timeout:
                     30000,
@@ -50,7 +52,7 @@ class Application extends EventEmitter {
             socket: {
 
                 url:
-                    "http://localhost:3000",
+                    "http://192.168.0.178:3000",
 
                 autoConnect:
                     false,
@@ -197,7 +199,7 @@ class Application extends EventEmitter {
         //PrintWatcher
         //------------------------------------------------------
 
-        this.printExchangewatcher = new PrintExchangeWatcher();
+        this.printExchangewatcher = new PrintExchangeWatcher(this);
 
         //------------------------------------------------------
         // Events

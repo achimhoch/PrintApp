@@ -11,7 +11,7 @@ class PrintServerClient {
 
             baseUrl:
                 options.baseUrl ||
-                "http://localhost:3000/api",
+                "http://192.168.0.178:3000/api",
 
             apiKey:
                 options.apiKey || null,

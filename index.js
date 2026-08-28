@@ -1,7 +1,6 @@
 "use strict";
 
-const Application =
-    require("./application/Application");
+const Application = require("./app/App");
 
 //----------------------------------------------------------
 // Konfiguration

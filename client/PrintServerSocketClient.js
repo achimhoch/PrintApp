@@ -14,7 +14,7 @@ class PrintServerSocketClient extends EventEmitter {
 
             url:
                 options.url ||
-                "http://localhost:3000",
+                "http://192.168.0.178:3000",
 
             path:
                 options.path ||
