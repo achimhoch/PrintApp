@@ -12,7 +12,7 @@ const config = {
 
         baseUrl:
             process.env.PRINTSERVER_API_URL ||
-            "http://localhost:3000/api",
+            "http://192.168.0.178:3000/api",
 
         timeout:
             Number(
@@ -29,7 +29,7 @@ const config = {
 
         url:
             process.env.PRINTSERVER_SOCKET_URL ||
-            "http://localhost:3000",
+            "http://192.168.0.178:3000",
 
         path:
             process.env.PRINTSERVER_SOCKET_PATH ||

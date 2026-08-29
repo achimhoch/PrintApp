@@ -136,7 +136,7 @@ class PrintServerClient {
             let data;
 
             if (
-                contentType.includes(
+                contentType.includes( 
                     "application/json"
                 )
             ) {

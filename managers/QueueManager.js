@@ -144,8 +144,7 @@ class QueueManager extends EventEmitter {
 
     async load() {
 
-        const result =
-            await this.printServer.getQueues();
+        const result = await this.printServer.getQueues();
 
         const queues =
             this.extractCollection(
